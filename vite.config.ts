@@ -7,19 +7,19 @@ import basicSsl from '@vitejs/plugin-basic-ssl'
 import path from 'path'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
-    basicSsl(),
+    command === 'serve' ? basicSsl() : null,
     react(),
     tailwindcss(),
     checker({ typescript: true }),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      includeAssets: ['favicon.svg', 'icons.svg'],
       manifest: {
-        name: 'fe-fastin5',
-        short_name: 'Fastin5',
-        description: 'fe-fastin5 PWA',
+        name: 'Fast in 5',
+        short_name: 'Fast in 5',
+        description: 'Fast in 5 PWA',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
@@ -58,4 +58,4 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
-})
+}))

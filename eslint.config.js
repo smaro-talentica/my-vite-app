@@ -19,6 +19,10 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      indent: ['error', 2],
+      'no-tabs': 'error',
+    },
   },
   prettier,
 ])
